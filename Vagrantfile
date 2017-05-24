@@ -16,10 +16,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".",
     "/home/vagrant/shared",
-    type: "rsync",
-    rsync__exclude: [".git"],
-    owner: "vagrant",
-    group: "vagrant"
+    type: "nfs"
 
   config.vm.provision "shell", inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
