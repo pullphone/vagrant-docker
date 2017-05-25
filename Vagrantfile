@@ -15,8 +15,9 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.synced_folder ".",
-    "/home/vagrant/shared",
-    type: "nfs"
+    "/vagrant",
+    type: "nfs",
+    mount_options: ["async", "nolock", "nfsvers=3", "vers=3", "tcp", "noatime", "soft", "rsize=8192", "wsize=8192"]
 
   config.vm.provision "shell", inline: <<-SHELL
     export DEBIAN_FRONTEND=noninteractive
